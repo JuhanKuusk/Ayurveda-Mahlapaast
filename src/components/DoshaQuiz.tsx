@@ -49,18 +49,21 @@ const doshaResults = {
   vata: {
     name: 'Vata',
     color: 'lavender',
+    emoji: '🌬️',
     description: 'Sinu domineeriv dosha on Vata - õhu ja eetri element. Sa oled loominguline, kiire mõtlemisega ja energiline.',
     recommendation: 'Soovitame "Vata Tasakaal" mahlasid - soojendavad, maandavad ja toitvad koostised aitavad tasakaalustada sinu liikuvat energiat.',
   },
   pitta: {
     name: 'Pitta',
     color: 'mint',
+    emoji: '🔥',
     description: 'Sinu domineeriv dosha on Pitta - tule ja vee element. Sa oled teotahteline, intelligentne ja entusiastlik.',
     recommendation: 'Soovitame "Pitta Jahedus" mahlasid - jahutavad, rahustavad koostised aitavad tasakaalustada sinu tulist energiat.',
   },
   kapha: {
     name: 'Kapha',
-    color: 'peach',
+    color: 'gold',
+    emoji: '🌍',
     description: 'Sinu domineeriv dosha on Kapha - maa ja vee element. Sa oled rahulik, stabiilne ja armastav.',
     recommendation: 'Soovitame "Kapha Energia" mahlasid - ergutavad, kerged koostised aitavad aktiveerida sinu stabiilset energiat.',
   },
@@ -97,17 +100,17 @@ export default function DoshaQuiz() {
   };
 
   const colorClasses = {
-    lavender: 'from-lavender to-sky',
-    mint: 'from-mint to-sky',
-    peach: 'from-peach to-coral',
+    lavender: 'from-lavender via-lavender to-lavender-dark',
+    mint: 'from-mint via-mint to-mint-dark',
+    gold: 'from-sage via-gold to-gold-dark',
   };
 
   return (
-    <section id="dosha-test" className="py-24 bg-gradient-to-b from-cream to-lavender/20">
+    <section id="dosha-test" className="py-24 bg-gradient-to-b from-cream via-peach/10 to-cream">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-12">
-          <span className="inline-block text-sage-dark text-sm font-semibold tracking-wider uppercase mb-4">
+          <span className="inline-block bg-gradient-to-r from-sage to-gold bg-clip-text text-transparent text-sm font-semibold tracking-wider uppercase mb-4">
             Avasta Oma Dosha
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6">
@@ -119,22 +122,22 @@ export default function DoshaQuiz() {
         </div>
 
         {/* Quiz container */}
-        <div className="bg-white rounded-3xl shadow-xl p-8 sm:p-12">
+        <div className="bg-white rounded-3xl shadow-xl shadow-sage/10 p-8 sm:p-12 border border-gold/10">
           {!isStarted && !result && (
             <div className="text-center">
               <div className="flex justify-center gap-4 mb-8">
-                <div className="w-20 h-20 rounded-full bg-lavender/50 flex items-center justify-center text-2xl font-bold text-lavender-dark">V</div>
-                <div className="w-20 h-20 rounded-full bg-mint/50 flex items-center justify-center text-2xl font-bold text-mint-dark">P</div>
-                <div className="w-20 h-20 rounded-full bg-peach/50 flex items-center justify-center text-2xl font-bold text-peach-dark">K</div>
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-lavender to-lavender-dark flex items-center justify-center text-2xl font-bold text-white shadow-lg shadow-lavender/30">V</div>
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-mint to-mint-dark flex items-center justify-center text-2xl font-bold text-white shadow-lg shadow-mint/30">P</div>
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-sage to-gold-dark flex items-center justify-center text-2xl font-bold text-white shadow-lg shadow-gold/30">K</div>
               </div>
               <p className="text-foreground/70 mb-8">
                 Ayurveda järgi on igal inimesel unikaalne kombinatsioon kolmest doshast:
-                <strong> Vata</strong> (õhk), <strong>Pitta</strong> (tuli) ja <strong>Kapha</strong> (maa).
+                <strong className="text-lavender-dark"> Vata</strong> (õhk), <strong className="text-mint-dark">Pitta</strong> (tuli) ja <strong className="text-sage">Kapha</strong> (maa).
                 Avasta, milline neist sinus domineerib!
               </p>
               <button
                 onClick={() => setIsStarted(true)}
-                className="bg-sage hover:bg-sage-dark text-white px-8 py-4 rounded-full text-lg font-medium transition-all transform hover:scale-105"
+                className="bg-gradient-to-r from-sage to-gold hover:from-sage-dark hover:to-gold-dark text-white px-8 py-4 rounded-full text-lg font-medium transition-all transform hover:scale-105 shadow-lg shadow-sage/30"
               >
                 Alusta testi
               </button>
@@ -149,9 +152,9 @@ export default function DoshaQuiz() {
                   <span>Küsimus {currentQuestion + 1}/{questions.length}</span>
                   <span>{Math.round(((currentQuestion + 1) / questions.length) * 100)}%</span>
                 </div>
-                <div className="h-2 bg-cream-dark rounded-full overflow-hidden">
+                <div className="h-3 bg-cream-dark rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-sage to-mint transition-all duration-300"
+                    className="h-full bg-gradient-to-r from-sage via-gold to-coral transition-all duration-500 rounded-full"
                     style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
                   ></div>
                 </div>
@@ -168,7 +171,7 @@ export default function DoshaQuiz() {
                   <button
                     key={index}
                     onClick={() => handleAnswer(option.dosha)}
-                    className="w-full p-4 text-left border-2 border-sage/30 rounded-2xl hover:border-sage hover:bg-sage/5 transition-all text-foreground/80 hover:text-foreground"
+                    className="w-full p-4 text-left border-2 border-gold/30 rounded-2xl hover:border-sage hover:bg-gradient-to-r hover:from-sage/5 hover:to-gold/5 transition-all text-foreground/80 hover:text-foreground hover:shadow-md"
                   >
                     {option.text}
                   </button>
@@ -180,28 +183,28 @@ export default function DoshaQuiz() {
           {result && (
             <div className="text-center">
               {/* Result icon */}
-              <div className={`inline-flex items-center justify-center w-32 h-32 rounded-full bg-gradient-to-br ${colorClasses[doshaResults[result].color as keyof typeof colorClasses]} mb-6`}>
-                <span className="text-4xl font-bold text-white">{doshaResults[result].name.charAt(0)}</span>
+              <div className={`inline-flex items-center justify-center w-32 h-32 rounded-full bg-gradient-to-br ${colorClasses[doshaResults[result].color as keyof typeof colorClasses]} mb-6 shadow-xl`}>
+                <span className="text-5xl">{doshaResults[result].emoji}</span>
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
-                Sinu dosha on {doshaResults[result].name}!
+                Sinu dosha on <span className={`bg-gradient-to-r ${colorClasses[doshaResults[result].color as keyof typeof colorClasses]} bg-clip-text text-transparent`}>{doshaResults[result].name}</span>!
               </h3>
 
               <p className="text-foreground/70 mb-6 max-w-lg mx-auto">
                 {doshaResults[result].description}
               </p>
 
-              <div className="bg-cream-dark/50 rounded-2xl p-6 mb-8">
+              <div className="bg-gradient-to-r from-cream-dark/50 to-gold/10 rounded-2xl p-6 mb-8 border border-gold/20">
                 <p className="text-foreground/80">
-                  <strong>Meie soovitus:</strong> {doshaResults[result].recommendation}
+                  <strong className="text-sage">Meie soovitus:</strong> {doshaResults[result].recommendation}
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="#mahlad"
-                  className="bg-sage hover:bg-sage-dark text-white px-8 py-3 rounded-full font-medium transition-colors"
+                  className="bg-gradient-to-r from-sage to-gold hover:from-sage-dark hover:to-gold-dark text-white px-8 py-3 rounded-full font-medium transition-all transform hover:scale-105 shadow-md"
                 >
                   Vaata soovitatud mahlasid
                 </a>

@@ -1,36 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  /* Pastel Color Palette - Ayurveda Inspired */
-  --cream: #FFF8F0;
-  --cream-dark: #F5EDE3;
-  --sage: #C5D5CB;
-  --sage-dark: #9BB8A5;
-  --peach: #FFDAB3;
-  --peach-dark: #F5C299;
-  --lavender: #E8D5E8;
-  --lavender-dark: #D4B8D4;
-  --sky: #D4E5ED;
-  --sky-dark: #B8D4E5;
-  --coral: #F5C5B8;
-  --coral-dark: #E5A899;
-  --mint: #C5E5D5;
-  --mint-dark: #A5D4C0;
-  --gold: #E5D5B8;
-  --gold-dark: #D4C299;
+  /* Ayurveda Color Palette - Warm, Happy & Healthy */
 
-  /* Dosha Colors */
-  --vata-primary: #E8D5E8;
-  --vata-secondary: #D4E5ED;
-  --pitta-primary: #C5E5D5;
-  --pitta-secondary: #D4E5ED;
-  --kapha-primary: #FFDAB3;
-  --kapha-secondary: #F5C5B8;
+  /* Base - Warm Saffron Cream */
+  --cream: #FFF9F0;
+  --cream-dark: #FFF0E0;
 
-  /* Text Colors */
-  --text-dark: #3D3D3D;
-  --text-medium: #5D5D5D;
-  --text-light: #8D8D8D;
+  /* Primary - Turmeric Gold (healing, warmth, prosperity) */
+  --sage: #E8A838;
+  --sage-dark: #D4942C;
+
+  /* Accent - Warm Terracotta (earth, grounding) */
+  --peach: #F4A460;
+  --peach-dark: #E8924C;
+
+  /* Vata - Calming Purple/Violet (air element, spirituality) */
+  --lavender: #9B7BB8;
+  --lavender-dark: #7D5FA0;
+
+  /* Secondary - Warm Teal (balance, healing) */
+  --sky: #48A9A6;
+  --sky-dark: #3A8B88;
+
+  /* Coral - Warm Sunset (energy, vitality) */
+  --coral: #E57A6C;
+  --coral-dark: #D4685A;
+
+  /* Pitta - Cooling Green (nature, renewal, balance) */
+  --mint: #5DB075;
+  --mint-dark: #4A9660;
+
+  /* Gold - Saffron/Marigold (sacred, auspicious) */
+  --gold: #F5B041;
+  --gold-dark: #E39B2D;
+
+  /* Dosha Colors - Authentic Ayurveda */
+  --vata-primary: #9B7BB8;      /* Purple - Air/Ether element */
+  --vata-secondary: #C4A8D8;
+  --pitta-primary: #5DB075;      /* Green - Fire/Water, cooling */
+  --pitta-secondary: #7CC994;
+  --kapha-primary: #E8A838;      /* Gold/Orange - Earth/Water, warming */
+  --kapha-secondary: #F5C366;
+
+  /* Text Colors - Warm tones */
+  --text-dark: #2D2A26;
+  --text-medium: #4A4540;
+  --text-light: #7A756D;
 
   --background: var(--cream);
   --foreground: var(--text-dark);
@@ -73,7 +89,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Golden */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -102,6 +118,16 @@ html {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(232, 168, 56, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(232, 168, 56, 0.5); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
@@ -110,15 +136,43 @@ html {
   animation: fadeIn 0.6s ease-out forwards;
 }
 
-/* Gradient backgrounds */
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Gradient backgrounds - Ayurveda inspired */
 .gradient-vata {
-  background: linear-gradient(135deg, var(--lavender) 0%, var(--sky) 100%);
+  background: linear-gradient(135deg, #9B7BB8 0%, #C4A8D8 50%, #E8D5F0 100%);
 }
 
 .gradient-pitta {
-  background: linear-gradient(135deg, var(--mint) 0%, var(--sky) 100%);
+  background: linear-gradient(135deg, #5DB075 0%, #7CC994 50%, #A8E0B8 100%);
 }
 
 .gradient-kapha {
-  background: linear-gradient(135deg, var(--peach) 0%, var(--coral) 100%);
+  background: linear-gradient(135deg, #E8A838 0%, #F5C366 50%, #FFE0A0 100%);
+}
+
+/* Golden shimmer effect */
+.golden-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--sage) 0%,
+    var(--gold) 25%,
+    var(--sage) 50%,
+    var(--gold) 75%,
+    var(--sage) 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Warm gradient overlay */
+.warm-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 249, 240, 0) 0%,
+    rgba(232, 168, 56, 0.05) 50%,
+    rgba(245, 176, 65, 0.1) 100%
+  );
 }

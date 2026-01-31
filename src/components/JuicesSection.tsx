@@ -59,11 +59,11 @@ const juices = [
 
 export default function JuicesSection() {
   return (
-    <section id="mahlad" className="py-24 bg-cream-dark/50">
+    <section id="mahlad" className="py-24 bg-gradient-to-b from-cream-dark/30 via-gold/5 to-cream-dark/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-16">
-          <span className="inline-block text-sage-dark text-sm font-semibold tracking-wider uppercase mb-4">
+          <span className="inline-block bg-gradient-to-r from-sage to-gold bg-clip-text text-transparent text-sm font-semibold tracking-wider uppercase mb-4">
             Meie Mahlad
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6">
@@ -75,21 +75,21 @@ export default function JuicesSection() {
           </p>
         </div>
 
-        {/* Dosha filter pills */}
+        {/* Dosha filter pills - vibrant colors */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
-          <button className="bg-sage text-white px-6 py-2 rounded-full text-sm font-medium">
+          <button className="bg-gradient-to-r from-sage to-gold text-white px-6 py-2 rounded-full text-sm font-medium shadow-md">
             Kõik
           </button>
-          <button className="bg-lavender hover:bg-lavender-dark text-foreground px-6 py-2 rounded-full text-sm font-medium transition-colors">
+          <button className="bg-lavender hover:bg-lavender-dark text-white px-6 py-2 rounded-full text-sm font-medium transition-all hover:scale-105 shadow-md">
             Vata
           </button>
-          <button className="bg-mint hover:bg-mint-dark text-foreground px-6 py-2 rounded-full text-sm font-medium transition-colors">
+          <button className="bg-mint hover:bg-mint-dark text-white px-6 py-2 rounded-full text-sm font-medium transition-all hover:scale-105 shadow-md">
             Pitta
           </button>
-          <button className="bg-peach hover:bg-peach-dark text-foreground px-6 py-2 rounded-full text-sm font-medium transition-colors">
+          <button className="bg-sage hover:bg-sage-dark text-white px-6 py-2 rounded-full text-sm font-medium transition-all hover:scale-105 shadow-md">
             Kapha
           </button>
-          <button className="bg-gold hover:bg-gold-dark text-foreground px-6 py-2 rounded-full text-sm font-medium transition-colors">
+          <button className="bg-coral hover:bg-coral-dark text-white px-6 py-2 rounded-full text-sm font-medium transition-all hover:scale-105 shadow-md">
             Universaalsed
           </button>
         </div>
